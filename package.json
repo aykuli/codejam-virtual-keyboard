@@ -1,0 +1,28 @@
+{
+  "name": "codejam-virtual-keyboard",
+  "version": "1.0.0",
+  "description": "codejam from RSSchool",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aykuli/codejam-virtual-keyboard.git"
+  },
+  "keywords": [
+    "keyboard",
+    "virtual"
+  ],
+  "author": "Aynur Shauerman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aykuli/codejam-virtual-keyboard/issues"
+  },
+  "homepage": "https://github.com/aykuli/codejam-virtual-keyboard#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2"
+  }
+}

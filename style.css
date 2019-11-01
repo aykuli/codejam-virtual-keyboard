@@ -1,0 +1,111 @@
+.wrapper {
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.keyboard {
+  width: 704px;
+  margin: 0 auto;
+}
+
+.keyboard .row {
+  clear: both;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.keyboard .key {
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+
+  font-weight: 500;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+
+  background: #3a424e;
+  border-radius: 3px;
+
+  cursor: pointer;
+}
+
+.keyboard .key:hover {
+  background: #4f72a7;
+}
+
+.keyboard .backspace,
+.keyboard .capslock,
+.keyboard .shift {
+  width: 100px;
+}
+
+.keyboard .alt,
+.keyboard .arrow,
+.keyboard .backspace,
+.keyboard .capslock,
+.keyboard .ctrl,
+.keyboard .del,
+.keyboard .enter,
+.keyboard .shift,
+.keyboard .shift-right,
+.keyboard .tab,
+.keyboard .win {
+  font-weight: 600;
+  color: #808080;
+
+  background-color: #1c232e;
+}
+
+.keyboard .tab {
+  width: 50px;
+}
+
+.keyboard .del {
+  width: 44px;
+}
+
+.keyboard .enter,
+.keyboard .shift-right {
+  width: 86px;
+}
+
+.keyboard .ctrl {
+  width: 40px;
+}
+
+.keyboard .space {
+  width: 330px;
+}
+
+.keyboard sup {
+  position: absolute;
+  margin: -10px 0 0 -20px;
+  font-size: 12px;
+}
+
+.textarea {
+  display: block;
+  width: 700px;
+  height: 100px;
+  margin: 0 auto 10px;
+  padding: 10px;
+  
+  font-size: 18px;
+  color: #444;
+}
+
+.off,
+.up {
+  display: none;
+}
+
+.down {
+  display: inherit;
+}
+
+.keyboard .key.active {
+  background-color: #2a71ce;
+  border-radius: 50px;
+}
