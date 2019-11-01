@@ -16,7 +16,7 @@ keyboardKeys = [
     ["backspace", "Backspace", "Backspace", "", "", ""]
   ],
   [
-    ["tab", 'Tab', '', '', '', ''],
+    ["tab", 'Tab', 'Tab', '', '', ''],
     ["", 'KeyQ', "й", "Й", "q", "Q"],
     ["", 'KeyW', "ц", "Ц", "w", "W"],
     ['', 'KeyE', "у", "У", "e", "E"],
@@ -33,7 +33,7 @@ keyboardKeys = [
     ['del', "Delete", 'Del', '', '', '', '']
   ],
   [
-    ["capslock", 'CapsLock', '', '', '', '', ''],
+    ["capslock", 'CapsLock', 'CapsLock', '', '', '', ''],
     ['', 'KeyA', "ф", "Ф", "a", "A"],
     ['', 'KeyS', "ы", "Ы", "s", "S"],
     ['', 'KeyD', "в", "В", "d", "D"],
@@ -45,11 +45,11 @@ keyboardKeys = [
     ['', "KeyL", "д", "Д", "l", "L"],
     ['', 'Semicolon', "ж", "Ж", ";", ":"],
     ["", "Quote", "э", "Э", "'", '"'],
-    ['enter', "Enter", '', '', '' ,'']
+    ['enter', "Enter", 'Enter', '', '' ,'']
   ],
   [
-    ['shift', "Shift", '', '', '', ''],
-    ['', "KeyZ", , "я", "Я", "z", "Z"],
+    ['shift', "Shift", 'Shift', '', '', ''],
+    ['', "KeyZ", "я", "Я", "z", "Z"],
     ['', "KeyX", "ч", "Ч", "x", "X"],
     ['', "KeyC", "с", "С", "c", "C"],
     ['', "KeyV", "м", "М", "v", "V"],
@@ -59,19 +59,19 @@ keyboardKeys = [
     ['', "Comma", "б", "Б", ".", "<"],
     ['', "Period", "ю", "Ю", ",", ">"],
     ['', 'Slash', ".", ",", "/", "?"],
-    ['', 'ArrowUp', ".", ",", "/", "?"],
-    ['shift', "Shift", '', '', '', '']
+    ['', 'ArrowUp', "▲", "", "", ""],
+    ['shift', "Shift", 'Shift', '', '', '']
   ],
   [
-    ["ctrl", "Ctrl", '', '', '', ''],
-    ["win", 'Win', '', '', '', ''],
-    ["alt", "Alt", "", '', '', ''],
+    ["ctrl", "Ctrl", 'Ctrl', '', '', ''],
+    ["win", 'Win', 'Win', '', '', ''],
+    ["alt", "Alt", "Alt", '', '', ''],
     ["space", "Space", " ", " ", '', ''],
-    ["alt", "Alt", "", '', '', ''],
+    ["alt", "Alt", "Alt", '', '', ''],
     ["", 'ArrowLeft', "<", "<", "<", "<"],
     ['', "ArrowDown", "▼", "▼", "▼", "▼"],
-    ['', 'ArrowRight', "►", "►", "►", "►"],
-    ["ctrl", "Ctrl", '', '', '', '']
+    ['', 'ArrowRight', ">", ">", ">", ">"],
+    ["ctrl", "Ctrl", 'Ctrl', '', '', '']
   ]
 ];
 
@@ -95,16 +95,13 @@ for (let i = 0; i < 6; i++) {
   var row = document.createElement("div");
   row.className = "row";
   keyboard.append(row);
-    console.log("i === 0");
     for (let j = 0; j < rowNumbers[i]; j++) {
-        console.log();
       let key = document.createElement("button");
       key.className = "key " + keyboardKeys[i][j][0];
       row.append(key);
 
       let span = document.createElement("span");
       span.className = keyboardKeys[i][j][1];
-      console.log(keyboardKeys[i][j][1]);
       key.append(span);
       span.insertAdjacentText("afterbegin", keyboardKeys[i][j][2]);
     }
