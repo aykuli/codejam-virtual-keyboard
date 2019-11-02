@@ -210,16 +210,21 @@ function printingInTextArea(evt) {
   let symbol = "";
   let targetBtn = evt.target.closest("button");
   targetSpan = targetBtn.querySelector(".on");
+  let targetBtnName = targetSpan.className.split(" ")[0];
+  
+  console.log(targetSpan.className.split(" ")[0]);
   let specialBtn = targetBtn.classList[1];
   console.log('нажата ', specialBtn);
 
   keyboardKeys.forEach(row => {
     row.forEach(el => {
-      if (el[1] === targetSpan.className.split(" ")[0]) {
+      if (el[1] ===  targetBtnName &&
+          targetBtnName !== 'Delete' &&
+          targetBtnName !== 'Backspace') {
+            console.log('здесь мы выбрали, что будет добавлять в текстовую область')
         if (localStorage.getItem("virtualKeyboardLang") === "ru") {
           shiftPress ? (symbol = el[3]) : (symbol = el[2]);
-        } else shiftPress ? (symbol = el[5]) : (symbol = el[4]);
-        
+        } else shiftPress ? (symbol = el[5]) : (symbol = el[4]);        
       }
     });
   });
@@ -231,23 +236,21 @@ function printingInTextArea(evt) {
   if (specialBtn === 'enter') {
     symbol = '\n';
   }
+  console.log(textArea.selectionStart);
+  textArea.value = textArea.value.slice(0, textArea.selectionStart) + symbol + textArea.value.slice(textArea.selectionStart, textArea.value.length);
+  console.log(textArea.selectionStart, 'после добавления символа');
 
   if (specialBtn === 'backspace') {
-    console.log('backspace нажата')
-    symbol = 'он должен удалять';
-    console.log(textArea.selectionStart);
-    console.log(textArea.value);
-
+    if (textArea.selectionStart > 0) {
+      textArea.value = textArea.value.slice(0, textArea.selectionStart - 1) + textArea.value.slice(textArea.selectionStart, textArea.value.length);
+    }
   }
 
   if (specialBtn === 'del') {
-    symbol = '';
     if (textArea.selectionStart <= textArea.value.length) {
       textArea.value = textArea.value.slice(0, textArea.selectionStart) + textArea.value.slice(textArea.selectionStart + 1, textArea.value.length);
     }
   }
-  
-  textArea.value += symbol;
   textArea.focus();
   
 }
