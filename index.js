@@ -139,7 +139,7 @@ for (let i = 0; i < 5; i++) {
   keyboard.append(row);
 
   for (let j = 0; j < rowNumbers[i]; j++) {
-    let key = document.createElement("button");
+    var key = document.createElement("button");
     key.className = "key " + keyboardKeys[i][j][0];
     row.append(key);
 
@@ -181,22 +181,23 @@ for (let i = 0; i < 5; i++) {
     spanEnUp.insertAdjacentText("afterbegin", keyboardKeys[i][j][5]);
   }
 }
-
 //Functionality: printing symbols
 let shiftPress = false;
-function shiftUpKeyboard(evt) {
-  if (evt.shiftKey) {
-    shiftPress = true;
-    document.querySelectorAll(".on").forEach(key => {
-      key.children[0].classList.remove("case-shown");
-      key.children[0].classList.add("case-hidden");
-      key.children[1].classList.add("case-shown");
-      key.children[1].classList.remove("case-hidden");
-    });
-  }
+let caps = false;
+
+function caseUp() {
+  shiftPress = true;
+  // Changing case view in index.html to Uppercase
+  document.querySelectorAll(".on").forEach(key => {
+    key.children[0].classList.remove("case-shown");
+    key.children[0].classList.add("case-hidden");
+    key.children[1].classList.add("case-shown");
+    key.children[1].classList.remove("case-hidden");
+  });
 }
 
-function shiftDownKeyboard() {
+// Changing case view in index.html to undercase
+function caseDown() {
   shiftPress = false;
   document.querySelectorAll(".on").forEach(key => {
     key.children[0].classList.add("case-shown");
@@ -206,53 +207,77 @@ function shiftDownKeyboard() {
   });
 }
 
+function shiftUpKeyboard(evt) {
+  if (evt.shiftKey) {
+    caseUp();
+  }
+}
+
+function shiftDownKeyboard() {
+  shiftPress = false;
+  caseDown();
+}
+
 function printingInTextArea(evt) {
   let symbol = "";
   let targetBtn = evt.target.closest("button");
   targetSpan = targetBtn.querySelector(".on");
   let targetBtnName = targetSpan.className.split(" ")[0];
-  
-  console.log(targetSpan.className.split(" ")[0]);
   let specialBtn = targetBtn.classList[1];
-  console.log('нажата ', specialBtn);
+  // console.log(targetBtn);
 
+  // Finding pressed symbol
   keyboardKeys.forEach(row => {
     row.forEach(el => {
-      if (el[1] ===  targetBtnName &&
-          targetBtnName !== 'Delete' &&
-          targetBtnName !== 'Backspace') {
-            console.log('здесь мы выбрали, что будет добавлять в текстовую область')
+      if (el[1] === targetBtnName &&
+          targetBtnName !== "Delete" &&
+          targetBtnName !== "Backspace" &&
+          targetBtnName !== "CapsLock") {
         if (localStorage.getItem("virtualKeyboardLang") === "ru") {
           shiftPress ? (symbol = el[3]) : (symbol = el[2]);
-        } else shiftPress ? (symbol = el[5]) : (symbol = el[4]);        
+        } else shiftPress ? (symbol = el[5]) : (symbol = el[4]);
       }
     });
   });
 
-  if (specialBtn === 'tab') {
-    symbol = '  ';
+  if (specialBtn === "tab") {
+    symbol = "  ";
   }
 
-  if (specialBtn === 'enter') {
-    symbol = '\n';
+  if (specialBtn === "enter") {
+    symbol = "\n";
   }
-  console.log(textArea.selectionStart);
-  textArea.value = textArea.value.slice(0, textArea.selectionStart) + symbol + textArea.value.slice(textArea.selectionStart, textArea.value.length);
-  console.log(textArea.selectionStart, 'после добавления символа');
+  // Adding symbol to textArea
+  textArea.setRangeText(symbol, textArea.selectionStart, textArea.selectionEnd, "end" );
 
-  if (specialBtn === 'backspace') {
+  if (specialBtn === "backspace") {
     if (textArea.selectionStart > 0) {
-      textArea.value = textArea.value.slice(0, textArea.selectionStart - 1) + textArea.value.slice(textArea.selectionStart, textArea.value.length);
+      let pos = textArea.selectionStart;
+      textArea.value = textArea.value.slice(0, pos - 1) + textArea.value.slice(pos, textArea.value.length);
+      textArea.setRangeText("", pos - 1, pos - 1, "end");
     }
   }
 
-  if (specialBtn === 'del') {
+  if (specialBtn === "del") {
+    let pos = textArea.selectionStart;
     if (textArea.selectionStart <= textArea.value.length) {
-      textArea.value = textArea.value.slice(0, textArea.selectionStart) + textArea.value.slice(textArea.selectionStart + 1, textArea.value.length);
+      textArea.value = textArea.value.slice(0, pos) + textArea.value.slice( pos + 1, textArea.value.length );
+      textArea.setRangeText("", pos, pos, "end");
     }
+  }
+
+  if (specialBtn === 'capslock') {
+    let capsBtn = document.querySelector('.capslock');
+    if (caps === true) {
+      capsBtn.classList.add('active');
+      caseUp();
+    } else {
+      capsBtn.classList.remove('active');
+      caseDown();
+    }    
+    caps = !caps;
   }
   textArea.focus();
-  
 }
 
 document.addEventListener("keydown", shiftUpKeyboard);

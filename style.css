@@ -107,3 +107,10 @@
 .off, .case-hidden {
   display: none;
 }
+
+
+.key.active {
+  background: #476a9e;
+  box-shadow: inset 2px 2px 10px rgba(13, 16, 61, 0.5),
+    inset -2px 2px 10px rgba(13, 16, 61, 0.5);
+}
