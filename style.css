@@ -1,6 +1,6 @@
 .wrapper {
   margin: 0 auto;
-  
+
   font-family: Arial, sans-serif;
 
   outline: 1px solid rgb(99, 70, 230);
@@ -9,6 +9,12 @@
 .keyboard {
   width: 700px;
   margin: 0 auto;
+
+  -webkit-user-select: none;
+
+  -moz-user-select: none;
+
+  -ms-user-select: none;
 }
 
 .keyboard .row {
@@ -35,7 +41,7 @@
   background: #3a424e;
   border: none;
   border-radius: 3px;
-  box-shadow: 2px 2px 10px rgba(13, 16, 61, .5);
+  box-shadow: 2px 2px 10px rgba(13, 16, 61, 0.5);
 
   cursor: pointer;
 }
@@ -45,8 +51,8 @@
 }
 
 .keyboard .key:active {
-  box-shadow: inset 2px 2px 10px rgba(13, 16, 61, .5),
-              inset -2px 2px 10px rgba(13, 16, 61, .5);
+  box-shadow: inset 2px 2px 10px rgba(13, 16, 61, 0.5),
+    inset -2px 2px 10px rgba(13, 16, 61, 0.5);
   outline: none;
 }
 
@@ -75,7 +81,6 @@
   background-color: #1c232e;
 }
 
-
 .keyboard .space {
   flex-grow: 1;
 }
@@ -94,13 +99,13 @@
   height: 100px;
   margin: 0 auto 10px;
   padding: 10px;
-  
+
   font-size: 18px;
   color: #444;
 
   resize: none;
 }
 
-.off, .up {
+.off, .case-hidden {
   display: none;
 }

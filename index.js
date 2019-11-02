@@ -13,97 +13,127 @@ keyboardKeys = [
     ["", "Digit0", "0", ")", "0", ")"],
     ["", "Minus", "-", "_", "-", "_"],
     ["", "Equal", "=", "+", "=", "+"],
-    ["backspace", "Backspace", "Backspace", "Backspace", "Backspace", "Backspace"]
+    [
+      "backspace",
+      "Backspace",
+      "Backspace",
+      "Backspace",
+      "Backspace",
+      "Backspace"
+    ]
   ],
   [
-    ["tab", 'Tab', 'Tab', 'Tab', 'Tab', 'Tab'],
-    ["", 'KeyQ', "й", "Й", "q", "Q"],
-    ["", 'KeyW', "ц", "Ц", "w", "W"],
-    ['', 'KeyE', "у", "У", "e", "E"],
-    ['', 'KeyR', "к", "К", "r", "R"],
-    ['', 'KeyT', "е", "Е", "t", "T"],
-    ["", 'KeyY', "н", "Н", "y", "Y"],
-    ['', 'KeyU', "г", "Г", "u", "U"],
-    ['', 'KeyI', "ш", "Ш", "i", "I"],
-    ['', 'KeyO', "щ", "Щ", "o", "O"],
-    ['', 'KeyP', "з", "З", "p", "P"],
-    ['', 'BracketLeft', "х", "Х", "[", "{"],
-    ['', 'BracketRight', "ъ", "Ъ", "]", "}"],
-    ["", 'Backslash', "\\", "/", "\\", "|"],
-    ['del', "Delete", 'Del', 'Del', 'Del', 'Del', 'Del']
+    ["tab", "Tab", "Tab", "Tab", "Tab", "Tab"],
+    ["", "KeyQ", "й", "Й", "q", "Q"],
+    ["", "KeyW", "ц", "Ц", "w", "W"],
+    ["", "KeyE", "у", "У", "e", "E"],
+    ["", "KeyR", "к", "К", "r", "R"],
+    ["", "KeyT", "е", "Е", "t", "T"],
+    ["", "KeyY", "н", "Н", "y", "Y"],
+    ["", "KeyU", "г", "Г", "u", "U"],
+    ["", "KeyI", "ш", "Ш", "i", "I"],
+    ["", "KeyO", "щ", "Щ", "o", "O"],
+    ["", "KeyP", "з", "З", "p", "P"],
+    ["", "BracketLeft", "х", "Х", "[", "{"],
+    ["", "BracketRight", "ъ", "Ъ", "]", "}"],
+    ["", "Backslash", "\\", "/", "\\", "|"],
+    ["del", "Delete", "Del", "Del", "Del", "Del", "Del"]
   ],
   [
-    ["capslock", 'CapsLock', 'CapsLock', 'CapsLock', 'CapsLock', 'CapsLock', 'CapsLock'],
-    ['', 'KeyA', "ф", "Ф", "a", "A"],
-    ['', 'KeyS', "ы", "Ы", "s", "S"],
-    ['', 'KeyD', "в", "В", "d", "D"],
-    ['', 'KeyF', "а", "А", "f", "F"],
-    ['', 'KeyG', "п", "П", "g", "G"],
+    [
+      "capslock",
+      "CapsLock",
+      "CapsLock",
+      "CapsLock",
+      "CapsLock",
+      "CapsLock",
+      "CapsLock"
+    ],
+    ["", "KeyA", "ф", "Ф", "a", "A"],
+    ["", "KeyS", "ы", "Ы", "s", "S"],
+    ["", "KeyD", "в", "В", "d", "D"],
+    ["", "KeyF", "а", "А", "f", "F"],
+    ["", "KeyG", "п", "П", "g", "G"],
     ["", "KeyH", "р", "Р", "h", "H"],
-    ['', "KeyJ", "о", "О", "j", "J"],
+    ["", "KeyJ", "о", "О", "j", "J"],
     ["", "KeyK", "л", "Л", "k", "K"],
-    ['', "KeyL", "д", "Д", "l", "L"],
-    ['', 'Semicolon', "ж", "Ж", ";", ":"],
+    ["", "KeyL", "д", "Д", "l", "L"],
+    ["", "Semicolon", "ж", "Ж", ";", ":"],
     ["", "Quote", "э", "Э", "'", '"'],
-    ['enter', "Enter", 'Enter', 'Enter', 'Enter' ,'Enter']
+    ["enter", "Enter", "Enter", "Enter", "Enter", "Enter"]
   ],
   [
-    ['shift', "Shift", 'Shift', 'Shift', 'Shift', 'Shift'],
-    ['', "KeyZ", "я", "Я", "z", "Z"],
-    ['', "KeyX", "ч", "Ч", "x", "X"],
-    ['', "KeyC", "с", "С", "c", "C"],
-    ['', "KeyV", "м", "М", "v", "V"],
-    ['', "KeyB", "и", "И", "b", "B"],
-    ['', "KeyN", "т", "Т", "n", "N"],
-    ['', "KeyM", "ь", "Ь", "m", "M"],
-    ['', "Comma", "б", "Б", ".", "<"],
-    ['', "Period", "ю", "Ю", ",", ">"],
-    ['', 'Slash', ".", ",", "/", "?"],
-    ['', 'ArrowUp', "▲", "▲", "▲", "▲"],
-    ['shift', "Shift", 'Shift', 'Shift', 'Shift', 'Shift']
+    ["shift", "Shift", "Shift", "Shift", "Shift", "Shift"],
+    ["", "KeyZ", "я", "Я", "z", "Z"],
+    ["", "KeyX", "ч", "Ч", "x", "X"],
+    ["", "KeyC", "с", "С", "c", "C"],
+    ["", "KeyV", "м", "М", "v", "V"],
+    ["", "KeyB", "и", "И", "b", "B"],
+    ["", "KeyN", "т", "Т", "n", "N"],
+    ["", "KeyM", "ь", "Ь", "m", "M"],
+    ["", "Comma", "б", "Б", ".", "<"],
+    ["", "Period", "ю", "Ю", ",", ">"],
+    ["", "Slash", ".", ",", "/", "?"],
+    ["", "ArrowUp", "▲", "▲", "▲", "▲"],
+    ["shift", "Shift", "Shift", "Shift", "Shift", "Shift"]
   ],
   [
-    ["ctrl", "Ctrl", 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl'],
-    ["win", 'Win', 'Win', 'Win', 'Win', 'Win'],
-    ["alt", "Alt", "Alt", 'Alt', 'Alt', 'Alt'],
-    ["space", "Space", " ", " ", '', ''],
-    ["alt", "Alt", "Alt", 'Alt', 'Alt', 'Alt'],
-    ["", 'ArrowLeft', "<", "<", "<", "<"],
-    ['', "ArrowDown", "▼", "▼", "▼", "▼"],
-    ['', 'ArrowRight', ">", ">", ">", ">"],
-    ["ctrl", "Ctrl", 'Ctrl', 'Ctrl', 'Ctrl', 'Ctrl']
+    ["ctrl", "Ctrl", "Ctrl", "Ctrl", "Ctrl", "Ctrl"],
+    ["win", "Win", "Win", "Win", "Win", "Win"],
+    ["alt", "Alt", "Alt", "Alt", "Alt", "Alt"],
+    ["space", "Space", " ", " ", " ", " "],
+    ["alt", "Alt", "Alt", "Alt", "Alt", "Alt"],
+    ["", "ArrowLeft", "<", "<", "<", "<"],
+    ["", "ArrowDown", "▼", "▼", "▼", "▼"],
+    ["", "ArrowRight", ">", ">", ">", ">"],
+    ["ctrl", "Ctrl", "Ctrl", "Ctrl", "Ctrl", "Ctrl"]
   ]
 ];
 
 // Creating textaree and keyboard div container
-let keys = [["Backquote", "Digit1", "Minus", "Equal", "Backspace"]];
-let form = document.createElement("form");
+let form = document.createElement("div");
 form.className = "wrapper";
 document.body.append(form);
 
-let textarea = document.createElement("textarea");
-textarea.className = "textarea";
-form.append(textarea);
-textarea.setAttribute("type", "textarea");
+let textArea = document.createElement("textarea");
+textArea.className = "textarea";
+form.append(textArea);
+textArea.setAttribute("type", "textarea");
 
 let keyboard = document.createElement("div");
 keyboard.className = "keyboard";
 form.append(keyboard);
 
 //KeyboardLanguage changing
-let lang = localStorage.getItem('virtualKeyboardLang');
-if ( lang === null) {
-  localStorage.setItem('virtualKeyboardLang', 'en');
+if (localStorage.getItem("virtualKeyboardLang") === null) {
+  localStorage.setItem("virtualKeyboardLang", "en");
 }
-document.addEventListener('keydown', function(evt) {
+
+document.addEventListener("keydown", function(evt) {
   if (evt.shiftKey && evt.altKey) {
-    (lan === 'en') ? localStorage.setItem('virtualKeyboardLang', 'ru') : localStorage.setItem('virtualKeyboardLang', 'en');
-    location.reload();
-  }  
+    if (localStorage.getItem("virtualKeyboardLang") === "en") {
+      localStorage.removeItem("virtualKeyboardLang");
+      localStorage.setItem("virtualKeyboardLang", "ru");
+    } else if (localStorage.getItem("virtualKeyboardLang") === "ru") {
+      localStorage.removeItem("virtualKeyboardLang");
+      localStorage.setItem("virtualKeyboardLang", "en");
+    }
+    keyboard.querySelectorAll(".row").forEach(row => {
+      row.querySelectorAll(".key").forEach(key => {
+        let on = key.querySelector(".on");
+        let off = key.querySelector(".off");
+        on.classList.remove("on");
+        on.classList.add("off");
+        off.classList.remove("off");
+        off.classList.add("on");
+      });
+    });
+  }
 });
 
+// Creating buttons
 let rowNumbers = [14, 15, 13, 13, 9];
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 5; i++) {
   var row = document.createElement("div");
   row.className = "row";
   keyboard.append(row);
@@ -120,13 +150,13 @@ for (let i = 0; i < 6; i++) {
     let spanRuUp = document.createElement("span");
     let spanRuDown = document.createElement("span");
 
-    let [langOn, langOff] = [' on', ' off'];
-    if (lang == 'en') {
-      langOn = ' on';
-      langOff=  ' off';
+    let [langOn, langOff] = [" on", " off"];
+    if (localStorage.getItem("virtualKeyboardLang") === "en") {
+      langOn = " on";
+      langOff = " off";
     } else {
-      langOn = ' off';
-      langOff=  ' on';
+      langOn = " off";
+      langOff = " on";
     }
     spanEn.className = keyboardKeys[i][j][1] + langOn;
     spanRu.className = keyboardKeys[i][j][1] + langOff;
@@ -134,40 +164,94 @@ for (let i = 0; i < 6; i++) {
     key.append(spanEn);
     key.append(spanRu);
 
-    spanRuDown.className = 'case down';
+    spanRuDown.className = "case-shown";
     spanRu.append(spanRuDown);
     spanRuDown.insertAdjacentText("afterbegin", keyboardKeys[i][j][2]);
 
-    spanRuUp.className = 'case up';
+    spanRuUp.className = "case-hidden";
     spanRu.append(spanRuUp);
     spanRuUp.insertAdjacentText("afterbegin", keyboardKeys[i][j][3]);
 
-
-    spanEnDown.className = 'case down';
+    spanEnDown.className = "case-shown";
     spanEn.append(spanEnDown);
     spanEnDown.insertAdjacentText("afterbegin", keyboardKeys[i][j][4]);
 
-    spanEnUp.className = 'case up';
+    spanEnUp.className = "case-hidden";
     spanEn.append(spanEnUp);
     spanEnUp.insertAdjacentText("afterbegin", keyboardKeys[i][j][5]);
   }
 }
 
-keyboard.addEventListener('click', function(evt) {
-  let targetBtn = evt.target.closest('button');
-  console.dir(targetBtn);
-  
-  targetLang = targetBtn.querySelector('.on');
-  console.log(targetLang.className.split(' ')[0]);
+//Functionality: printing symbols
+let shiftPress = false;
+function shiftUpKeyboard(evt) {
+  if (evt.shiftKey) {
+    shiftPress = true;
+    document.querySelectorAll(".on").forEach(key => {
+      key.children[0].classList.remove("case-shown");
+      key.children[0].classList.add("case-hidden");
+      key.children[1].classList.add("case-shown");
+      key.children[1].classList.remove("case-hidden");
+    });
+  }
+}
+
+function shiftDownKeyboard() {
+  shiftPress = false;
+  document.querySelectorAll(".on").forEach(key => {
+    key.children[0].classList.add("case-shown");
+    key.children[0].classList.remove("case-hidden");
+    key.children[1].classList.remove("case-shown");
+    key.children[1].classList.add("case-hidden");
+  });
+}
+
+function printingInTextArea(evt) {
+  let symbol = "";
+  let targetBtn = evt.target.closest("button");
+  targetSpan = targetBtn.querySelector(".on");
+  let specialBtn = targetBtn.classList[1];
+  console.log('нажата ', specialBtn);
 
   keyboardKeys.forEach(row => {
     row.forEach(el => {
-      if (el == targetLang.className.split(' ')[0]) {
+      if (el[1] === targetSpan.className.split(" ")[0]) {
+        if (localStorage.getItem("virtualKeyboardLang") === "ru") {
+          shiftPress ? (symbol = el[3]) : (symbol = el[2]);
+        } else shiftPress ? (symbol = el[5]) : (symbol = el[4]);
         
-        console.dir('el =', el);
       }
     });
   });
-});
 
+  if (specialBtn === 'tab') {
+    symbol = '  ';
+  }
 
+  if (specialBtn === 'enter') {
+    symbol = '\n';
+  }
+
+  if (specialBtn === 'backspace') {
+    console.log('backspace нажата')
+    symbol = 'он должен удалять';
+    console.log(textArea.selectionStart);
+    console.log(textArea.value);
+
+  }
+
+  if (specialBtn === 'del') {
+    symbol = '';
+    if (textArea.selectionStart <= textArea.value.length) {
+      textArea.value = textArea.value.slice(0, textArea.selectionStart) + textArea.value.slice(textArea.selectionStart + 1, textArea.value.length);
+    }
+  }
+  
+  textArea.value += symbol;
+  textArea.focus();
+  
+}
+
+document.addEventListener("keydown", shiftUpKeyboard);
+keyboard.addEventListener("click", printingInTextArea);
+document.addEventListener("keyup", shiftDownKeyboard);
