@@ -158,6 +158,7 @@ function printingInTextArea(evt) {
     let targetSpan = targetBtn.querySelector(".on");
     let targetBtnName = targetSpan.className.split(" ")[0];
     let specialBtn = targetBtn.classList[1];
+    console.log(targetBtn);
 
     // Finding pressed symbol
     keyboardKeys.forEach(row => {
@@ -230,11 +231,11 @@ function printingInTextArea(evt) {
       let pos = textArea.selectionStart;
 
       if (targetBtnName === "ArrowUp") {
-        if (textArea.selectionStart > 69) setCaretPosition(textArea, pos - 60);
+        if (textArea.selectionStart > 69) setCaretPosition(textArea, pos - 69);
       } else if (targetBtnName === "ArrowRight") {
         setCaretPosition(textArea, pos + 1);
       } else if (targetBtnName === "ArrowDown") {
-        setCaretPosition(textArea, pos + 60);
+        setCaretPosition(textArea, pos + 69);
       } else if (targetBtnName === "ArrowLeft") {
         if (textArea.selectionStart > 0) setCaretPosition(textArea, pos - 1);
       }
@@ -260,7 +261,6 @@ function printingInTextArea(evt) {
 }
 
 function activeBtnHighlighting(btnPress, specialBtnEl) {
-  // console.log('btnPress =', btnPress);
   if (btnPress === false) {
     btnPress = true;
     specialBtnEl.classList.add("active");
@@ -279,13 +279,104 @@ document.addEventListener("keydown", evt => {
 });
 pageLangBtn.addEventListener("click", pageLangChanging);
 
-//highliting keyboard pressing symbols
+
 document.addEventListener("keydown", function(evt) {
+  let symbol = "";
   textArea.focus();
+  console.log('evt.code: ', evt.code);
+
+  keyboardKeys.forEach(row => {
+    row.forEach(el => {
+      if (el[1] === evt.code &&
+        evt.code !== "Backspace" &&
+        evt.code !== 'Delete' &&
+        evt.code !== 'CapsLock' &&
+        evt.code !== 'ShiftLeft' &&
+        evt.code !== 'ShiftRight' &&
+        evt.code !== 'ControlLeft' &&
+        evt.code !== 'ControlRight' &&
+        evt.code !== 'MetaLeft' &&
+        evt.code !== 'AltLeft' &&
+        evt.code !== 'AltRight' &&
+        evt.code !== 'ArrowUp' &&
+        evt.code !== 'ArrowRight' &&
+        evt.code !== 'ArrowDown' &&
+        evt.code !== 'ArrowLeft') {
+          
+        evt.preventDefault();
+        if (localStorage.getItem("virtualKeyboardLang") === "RU") {
+          shiftPress ? (symbol = el[3]) : (symbol = el[2]);
+          console.log(symbol);
+        } else shiftPress ? (symbol = el[5]) : (symbol = el[4]);
+      }
+    });
+  });
+
+  if (evt.code === "Tab") {
+    symbol = "  ";
+  }
+
+  if (evt.code === "Enter") {
+    symbol = "\n";
+  }
+
+  if (evt.code === "Backspace") {
+    if (textArea.selectionStart > 0) {
+      let pos = textArea.selectionStart;
+      textArea.value =
+        textArea.value.slice(0, pos - 1) +
+        textArea.value.slice(pos, textArea.value.length);
+      textArea.setRangeText("", pos - 1, pos - 1, "end");
+    }
+  }
+
+  if (evt.code === "Delete") {
+    let pos = textArea.selectionStart;
+    if (textArea.selectionStart <= textArea.value.length) {
+      textArea.value =
+        textArea.value.slice(0, pos) +
+        textArea.value.slice(pos + 1, textArea.value.length);
+      textArea.setRangeText("", pos, pos, "end");
+    }
+  }
+
+  let pos = textArea.selectionStart;
+
+  if (evt.code === "ArrowUp") {
+    setCaretPosition(textArea, pos - 69);
+  } else if (evt.code === "ArrowRight") {
+    setCaretPosition(textArea, pos + 1);
+  } else if (evt.code === "ArrowDown") {
+    setCaretPosition(textArea, pos + 69);
+  } else if (evt.code === "ArrowLeft") {
+    if (textArea.selectionStart > 0) setCaretPosition(textArea, pos - 1);
+  }
+
+  textArea.setRangeText(
+    symbol,
+    textArea.selectionStart,
+    textArea.selectionEnd,
+    "end"
+  );
+
+  //highliting keyboard pressing symbols
   keyboard.querySelectorAll(".row").forEach(row => {
-    row.querySelectorAll(".key").forEach(key => {
-      if (evt.code === key.children[0].classList[0]) {
-        key.classList.add("active");
+    row.querySelectorAll(".key").forEach(symb => {
+      if (evt.code === symb.children[0].classList[0]) {
+        console.log(symb.children[0].classList[0]);
+        if (evt.code === 'CapsLock') {
+          if (symb.classList.contains('active')) {
+            symb.classList.remove("active");
+            caseDown();
+            shiftPress = false;
+            } else {
+              symb.classList.add("active");
+              caseUp();
+              shiftPress = true;
+            }
+        } else {
+          symb.classList.add("active");
+        }
       }
     });
   });
@@ -293,9 +384,9 @@ document.addEventListener("keydown", function(evt) {
 document.addEventListener("keyup", function(evt) {
   keyboard.querySelectorAll(".row").forEach(row => {
     row.querySelectorAll(".key").forEach(key => {
-      if (evt.code === key.children[0].classList[0]) {
+      if (evt.code === key.children[0].classList[0] && evt.code !== 'CapsLock') {
         key.classList.remove("active");
-      }
+      } 
     });
   });
 });
