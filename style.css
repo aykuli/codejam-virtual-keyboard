@@ -1,17 +1,49 @@
 .wrapper {
+  width: 740px;
   margin: 0 auto;
+  padding: 30px;
 
   font-family: Arial, sans-serif;
+
+  outline: 1px solid red;
 }
+
+.page-lang {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  margin-left: auto;
+
+  font-size: 12px;
+  line-height: 30px;
+  color: #bebebe;
+  text-align: center;
+
+  background-color: rgba(28, 35, 46, .8);
+  box-shadow: 2px 2px 5px rgba(13, 16, 61, .3);
+  border: none;
+}
+
+.page-lang:hover,
+.page-lang:focus {
+  background-color: #476a9e;
+}
+
+.page-lang:active {
+  box-shadow: inset 2px 2px 10px rgba(13, 16, 61, 0.5),
+              inset -2px 2px 10px rgba(13, 16, 61, 0.5),
+              2px 2px 5px rgba(13, 16, 61, .3);;
+  outline: none;
+}
+
 
 .keyboard {
   width: 700px;
-  margin: 0 auto;
-
+  margin: 10px auto;
+  /* avoid user selction */
   -webkit-user-select: none;
-
   -moz-user-select: none;
-
   -ms-user-select: none;
 }
 
@@ -43,8 +75,12 @@
 
   cursor: pointer;
 }
+.keyboard .key:last-child {
+  margin-right: 0;
+}
 
-.keyboard .key:hover {
+.keyboard .key:hover,
+.keyboard .key:focus {
   background: #476a9e;
 }
 
@@ -56,19 +92,22 @@
 
 .keyboard .backspace,
 .keyboard .capslock,
-.keyboard .shift,
+.keyboard .shift-left,
+.keyboard .shift-right,
 .keyboard .enter {
-  width: 90px;
+  width: 87px;
 }
 
-.keyboard .alt,
+.keyboard .alt-left,
+.keyboard .alt-right,
 .keyboard .arrow,
 .keyboard .backspace,
 .keyboard .capslock,
-.keyboard .ctrl,
+.keyboard .ctrl-left,
+.keyboard .ctrl-right,
 .keyboard .del,
 .keyboard .enter,
-.keyboard .shift,
+.keyboard .shift-left,
 .keyboard .shift-right,
 .keyboard .tab,
 .keyboard .win {
@@ -95,7 +134,7 @@
   display: block;
   width: 700px;
   height: 100px;
-  margin: 0 auto 10px;
+  margin: 10px auto;
   padding: 10px;
 
   font-size: 18px;
