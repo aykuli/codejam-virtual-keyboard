@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 30px;
 
-  font-family: Arial, sans-serif;
+  font-family: monospace;
 
   outline: 1px solid red;
 }
@@ -41,7 +41,7 @@
 .keyboard {
   width: 700px;
   margin: 10px auto;
-  /* avoid user selction */
+  /* avoid user selection on keyboard*/
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -116,6 +116,10 @@
   color: #808080;
 
   background-color: #1c232e;
+}
+
+.keyboard .arrow {
+  font-size: 20px;
 }
 
 .keyboard .space {
