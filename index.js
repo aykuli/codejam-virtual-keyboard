@@ -121,8 +121,8 @@ class KeyboardVirtual {
     } else if (this.textArea.createTextRange) {
       const range = this.textArea.createTextRange();
       range.collapse(true);
-      range.moveEnd('character', pos);
-      range.moveStart('character', pos);
+      range.moveEnd('', pos);
+      range.moveStart('', pos);
       range.select();
     }
   }
@@ -177,6 +177,7 @@ class KeyboardVirtual {
 
   // Function that printing symbols
   printingInTextArea(evt) {
+    this.symbol = '';
     const targetBtn = evt.target.closest('button');
 
     if (targetBtn) {
@@ -299,6 +300,7 @@ class KeyboardVirtual {
     if (evt.shiftKey && evt.altKey) this.pageLangChanging();
 
     this.textArea.focus();
+    this.symbol = '';
 
     keyboardKeys.forEach(row => {
       row.forEach(el => {
