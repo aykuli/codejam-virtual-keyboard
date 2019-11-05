@@ -314,6 +314,7 @@ class KeyboardVirtual {
           evt.key !== 'Control' &&
           evt.key !== 'Meta' &&
           evt.key !== 'Alt' &&
+          evt.key !== 'Tab' &&
           evt.key !== 'ArrowUp' &&
           evt.key !== 'ArrowRight' &&
           evt.key !== 'ArrowDown' &&
@@ -333,44 +334,6 @@ class KeyboardVirtual {
         }
       });
     });
-
-    if (evt.key === 'Tab') {
-      this.symbol = '  ';
-    }
-
-    if (evt.key === 'Enter') {
-      this.symbol = '\n';
-    }
-
-    if (evt.key === 'Backspace') {
-      if (this.textArea.selectionStart > 0) {
-        const pos = this.textArea.selectionStart;
-        this.textArea.value =
-          this.textArea.value.slice(0, pos - 1) +
-          this.textArea.value.slice(pos, this.textArea.value.length);
-        this.textArea.setRangeText('', pos - 1, pos - 1, 'end');
-      }
-    }
-
-    if (evt.key === 'Delete') {
-      const pos = this.textArea.selectionStart;
-      if (this.textArea.selectionStart <= this.textArea.value.length) {
-        this.textArea.value =
-          this.textArea.value.slice(0, pos) +
-          this.textArea.value.slice(pos + 1, this.textArea.value.length);
-        this.textArea.setRangeText('', pos, pos, 'end');
-      }
-    }
-
-    const pos = this.textArea.selectionStart;
-
-    if (
-      evt.key === 'ArrowUp' ||
-      evt.key === 'ArrowRight' ||
-      evt.key === 'ArrowDown' ||
-      evt.key === 'ArrowLeft'
-    )
-      this.setCaretPosition(pos);
 
     this.textArea.setRangeText(
       this.symbol,
@@ -433,3 +396,7 @@ document.addEventListener('keydown', evt => {
 document.addEventListener('keyup', evt => {
   virtualKeyboard.keyUpOnRealKeyboard(evt);
 });
+
+window.onbeforeunload = () => {
+  return 'Есть несохранённые изменения. Всё равно уходим?';
+};
