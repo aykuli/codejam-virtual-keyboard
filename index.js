@@ -7,6 +7,7 @@ class KeyboardVirtual {
     this.altRightPress = false;
     this.ctrlLeftPress = false;
     this.ctrlRightPress = false;
+    this.langChangingOnCtrl = false;
 
     this.symbol = '';
     this.keyboard = document.createElement('div');
@@ -263,11 +264,11 @@ class KeyboardVirtual {
         const pos = this.textArea.selectionStart;
 
         if (targetBtnName === 'ArrowUp') {
-          if (this.textArea.selectionStart > 69) this.setCaretPosition(pos - 69);
+          if (this.textArea.selectionStart > 60) this.setCaretPosition(pos - 70);
         } else if (targetBtnName === 'ArrowRight') {
           this.setCaretPosition(pos + 1);
         } else if (targetBtnName === 'ArrowDown') {
-          this.setCaretPosition(pos + 69);
+          this.setCaretPosition(pos + 70);
         } else if (targetBtnName === 'ArrowLeft') {
           if (this.textArea.selectionStart > 0) this.setCaretPosition(pos - 1);
         }
@@ -306,20 +307,17 @@ class KeyboardVirtual {
       row.forEach(el => {
         if (
           el[1] === evt.code &&
-          evt.code !== 'Backspace' &&
-          evt.code !== 'Delete' &&
-          evt.code !== 'CapsLock' &&
-          evt.code !== 'ShiftLeft' &&
-          evt.code !== 'ShiftRight' &&
-          evt.code !== 'ControlLeft' &&
-          evt.code !== 'ControlRight' &&
-          evt.code !== 'MetaLeft' &&
-          evt.code !== 'AltLeft' &&
-          evt.code !== 'AltRight' &&
-          evt.code !== 'ArrowUp' &&
-          evt.code !== 'ArrowRight' &&
-          evt.code !== 'ArrowDown' &&
-          evt.code !== 'ArrowLeft'
+          evt.key !== 'Backspace' &&
+          evt.key !== 'Delete' &&
+          evt.key !== 'CapsLock' &&
+          evt.key !== 'Shift' &&
+          evt.key !== 'Control' &&
+          evt.key !== 'Meta' &&
+          evt.key !== 'Alt' &&
+          evt.key !== 'ArrowUp' &&
+          evt.key !== 'ArrowRight' &&
+          evt.key !== 'ArrowDown' &&
+          evt.key !== 'ArrowLeft'
         ) {
           evt.preventDefault();
           const [, , ruLowerCase, ruUpperCase, enLowerCase, enUpperCase] = el;
@@ -336,15 +334,15 @@ class KeyboardVirtual {
       });
     });
 
-    if (evt.code === 'Tab') {
+    if (evt.key === 'Tab') {
       this.symbol = '  ';
     }
 
-    if (evt.code === 'Enter') {
+    if (evt.key === 'Enter') {
       this.symbol = '\n';
     }
 
-    if (evt.code === 'Backspace') {
+    if (evt.key === 'Backspace') {
       if (this.textArea.selectionStart > 0) {
         const pos = this.textArea.selectionStart;
         this.textArea.value =
@@ -354,7 +352,7 @@ class KeyboardVirtual {
       }
     }
 
-    if (evt.code === 'Delete') {
+    if (evt.key === 'Delete') {
       const pos = this.textArea.selectionStart;
       if (this.textArea.selectionStart <= this.textArea.value.length) {
         this.textArea.value =
@@ -366,15 +364,13 @@ class KeyboardVirtual {
 
     const pos = this.textArea.selectionStart;
 
-    if (evt.code === 'ArrowUp') {
-      this.setCaretPosition(pos - 30);
-    } else if (evt.code === 'ArrowRight') {
-      this.setCaretPosition(pos + 1);
-    } else if (evt.code === 'ArrowDown') {
-      this.setCaretPosition(pos + 30);
-    } else if (evt.code === 'ArrowLeft') {
-      if (this.textArea.selectionStart > 0) this.setCaretPosition(pos - 1);
-    }
+    if (
+      evt.key === 'ArrowUp' ||
+      evt.key === 'ArrowRight' ||
+      evt.key === 'ArrowDown' ||
+      evt.key === 'ArrowLeft'
+    )
+      this.setCaretPosition(pos);
 
     this.textArea.setRangeText(
       this.symbol,
@@ -387,7 +383,7 @@ class KeyboardVirtual {
     this.keyboard.querySelectorAll('.row').forEach(row => {
       row.querySelectorAll('.key').forEach(symb => {
         if (evt.code === symb.children[0].classList[0]) {
-          if (evt.code === 'CapsLock') {
+          if (evt.key === 'CapsLock') {
             if (symb.classList.contains('active')) {
               symb.classList.remove('active');
               this.caseDown();
@@ -407,9 +403,10 @@ class KeyboardVirtual {
 
   keyUpOnRealKeyboard(evt) {
     this.caseDown();
+
     this.keyboard.querySelectorAll('.row').forEach(row => {
       row.querySelectorAll('.key').forEach(key => {
-        if (evt.code === key.children[0].classList[0] && evt.code !== 'CapsLock') {
+        if (evt.code === key.children[0].classList[0] && evt.key !== 'CapsLock') {
           key.classList.remove('active');
         }
       });
