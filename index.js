@@ -2,12 +2,11 @@ import keyboardKeys from './keyboardKeys.js';
 
 class KeyboardVirtual {
   constructor() {
-    this.shiftPress = false;
-    this.altLeftPress = false;
-    this.altRightPress = false;
-    this.ctrlLeftPress = false;
-    this.ctrlRightPress = false;
-    this.langChangingOnCtrl = false;
+    this.isShiftPress = false;
+    this.isAltLeftPress = false;
+    this.isAltRightPress = false;
+    this.isCtrlLeftPress = false;
+    this.isCtrlRightPress = false;
 
     this.symbol = '';
     this.keyboard = document.createElement('div');
@@ -94,7 +93,7 @@ class KeyboardVirtual {
   }
 
   caseUp() {
-    this.shiftPress = true;
+    this.isShiftPress = true;
     // Changing case view in index.html to Uppercase
     document.querySelectorAll('.on').forEach(key => {
       key.children[0].classList.remove('case-shown');
@@ -106,7 +105,7 @@ class KeyboardVirtual {
 
   // Changing case view in index.html to lowercase
   caseDown() {
-    this.shiftPress = false;
+    this.isShiftPress = false;
     document.querySelectorAll('.on').forEach(key => {
       key.children[0].classList.add('case-shown');
       key.children[0].classList.remove('case-hidden');
@@ -130,11 +129,11 @@ class KeyboardVirtual {
 
   // Highlighting buttins pressed on real keyboard
   activeBtnHighlighting(specialBtnEl) {
-    if (this.shiftPress) {
-      this.shiftPress = true;
+    if (this.isShiftPress) {
+      this.isShiftPress = true;
       specialBtnEl.classList.add('active');
     } else {
-      this.shiftPress = false;
+      this.isShiftPress = false;
       specialBtnEl.classList.remove('active');
     }
   }
@@ -165,13 +164,13 @@ class KeyboardVirtual {
   // Choosing symbol to print on depend of shift or caps pressed and language
   symbolChoise(el) {
     const [, , ruLowerCase, ruUpperCase, enLowerCase, enUpperCase] = el;
-    if (localStorage.getItem('virtualKeyboardLang') === 'RU' && this.shiftPress) {
+    if (localStorage.getItem('virtualKeyboardLang') === 'RU' && this.isShiftPress) {
       this.symbol = ruUpperCase;
-    } else if (localStorage.getItem('virtualKeyboardLang') === 'RU' && !this.shiftPress) {
+    } else if (localStorage.getItem('virtualKeyboardLang') === 'RU' && !this.isShiftPress) {
       this.symbol = ruLowerCase;
-    } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && this.shiftPress) {
+    } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && this.isShiftPress) {
       this.symbol = enUpperCase;
-    } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && !this.shiftPress) {
+    } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && !this.isShiftPress) {
       this.symbol = enLowerCase;
     }
   }
@@ -197,13 +196,13 @@ class KeyboardVirtual {
               specialBtn === 'enter')
           ) {
             const [, , ruLowerCase, ruUpperCase, enLowerCase, enUpperCase] = el;
-            if (localStorage.getItem('virtualKeyboardLang') === 'RU' && this.shiftPress) {
+            if (localStorage.getItem('virtualKeyboardLang') === 'RU' && this.isShiftPress) {
               this.symbol = ruUpperCase;
-            } else if (localStorage.getItem('virtualKeyboardLang') === 'RU' && !this.shiftPress) {
+            } else if (localStorage.getItem('virtualKeyboardLang') === 'RU' && !this.isShiftPress) {
               this.symbol = ruLowerCase;
-            } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && this.shiftPress) {
+            } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && this.isShiftPress) {
               this.symbol = enUpperCase;
-            } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && !this.shiftPress) {
+            } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && !this.isShiftPress) {
               this.symbol = enLowerCase;
             }
           }
@@ -240,8 +239,8 @@ class KeyboardVirtual {
         if (this.textArea.selectionStart <= this.textArea.value.length) {
           this.textArea.value =
             this.textArea.value.slice(0, pos) +
-            this.textArea.value.slice(pos + 1, this.textArea.value.length);
-          this.textArea.setRangeText('', pos, pos, 'end');
+            this.textArea.value.slice(pos, this.textArea.value.length);
+          this.textArea.setRangeText('', pos, pos + 1, 'end');
         }
       }
 
@@ -251,7 +250,7 @@ class KeyboardVirtual {
         specialBtn === 'shift-right' ||
         specialBtn === 'capslock'
       ) {
-        if (!this.shiftPress) {
+        if (!this.isShiftPress) {
           specialBtnEl.classList.add('active');
           this.caseUp();
         } else {
@@ -264,7 +263,7 @@ class KeyboardVirtual {
         const pos = this.textArea.selectionStart;
 
         if (targetBtnName === 'ArrowUp') {
-          if (this.textArea.selectionStart > 60) this.setCaretPosition(pos - 70);
+          this.setCaretPosition(pos - 70);
         } else if (targetBtnName === 'ArrowRight') {
           this.setCaretPosition(pos + 1);
         } else if (targetBtnName === 'ArrowDown') {
@@ -275,19 +274,19 @@ class KeyboardVirtual {
       }
 
       if (specialBtn === 'alt-left') {
-        this.altLeftPress = this.activeBtnHighlighting(this.altLeftPress, specialBtnEl);
+        this.isAltLeftPress = this.activeBtnHighlighting(this.isAltLeftPress, specialBtnEl);
       }
 
       if (specialBtn === 'alt-right') {
-        this.altRightPress = this.activeBtnHighlighting(this.altRightPress, specialBtnEl);
+        this.isAltRightPress = this.activeBtnHighlighting(this.isAltRightPress, specialBtnEl);
       }
 
       if (specialBtn === 'ctrl-left') {
-        this.ctrlLeftPress = this.activeBtnHighlighting(this.ctrlLeftPress, specialBtnEl);
+        this.isCtrlLeftPress = this.activeBtnHighlighting(this.isCtrlLeftPress, specialBtnEl);
       }
 
       if (specialBtn === 'ctrl-right') {
-        this.ctrlRightPress = this.activeBtnHighlighting(this.ctrlRightPress, specialBtnEl);
+        this.isCtrlRightPress = this.activeBtnHighlighting(this.isCtrlRightPress, specialBtnEl);
       }
     }
     this.textArea.focus();
@@ -313,6 +312,7 @@ class KeyboardVirtual {
           evt.key !== 'Shift' &&
           evt.key !== 'Control' &&
           evt.key !== 'Meta' &&
+          evt.key !== 'Enter' &&
           evt.key !== 'Alt' &&
           evt.key !== 'Tab' &&
           evt.key !== 'ArrowUp' &&
@@ -322,13 +322,13 @@ class KeyboardVirtual {
         ) {
           evt.preventDefault();
           const [, , ruLowerCase, ruUpperCase, enLowerCase, enUpperCase] = el;
-          if (localStorage.getItem('virtualKeyboardLang') === 'RU' && this.shiftPress) {
+          if (localStorage.getItem('virtualKeyboardLang') === 'RU' && this.isShiftPress) {
             this.symbol = ruUpperCase;
-          } else if (localStorage.getItem('virtualKeyboardLang') === 'RU' && !this.shiftPress) {
+          } else if (localStorage.getItem('virtualKeyboardLang') === 'RU' && !this.isShiftPress) {
             this.symbol = ruLowerCase;
-          } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && this.shiftPress) {
+          } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && this.isShiftPress) {
             this.symbol = enUpperCase;
-          } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && !this.shiftPress) {
+          } else if (localStorage.getItem('virtualKeyboardLang') === 'EN' && !this.isShiftPress) {
             this.symbol = enLowerCase;
           }
         }
@@ -350,11 +350,11 @@ class KeyboardVirtual {
             if (symb.classList.contains('active')) {
               symb.classList.remove('active');
               this.caseDown();
-              this.shiftPress = false;
+              this.isShiftPress = false;
             } else {
               symb.classList.add('active');
               this.caseUp();
-              this.shiftPress = true;
+              this.isShiftPress = true;
             }
           } else {
             symb.classList.add('active');
