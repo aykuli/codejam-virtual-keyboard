@@ -1,0 +1,158 @@
+.wrapper {
+  width: 740px;
+  margin: 0 auto;
+  padding: 30px;
+
+  font-family: monospace;
+}
+
+.page-lang {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+  margin-left: auto;
+
+  font-size: 12px;
+  line-height: 30px;
+  color: #bebebe;
+  text-align: center;
+
+  background-color: rgba(28, 35, 46, .8);
+  box-shadow: 2px 2px 5px rgba(13, 16, 61, .3);
+  border-radius: 3px;
+  border: none;
+}
+
+.page-lang:hover,
+.page-lang:focus {
+  background-color: #476a9e;
+}
+
+.page-lang:active {
+  box-shadow: inset 2px 2px 10px rgba(13, 16, 61, 0.5),
+              inset -2px 2px 10px rgba(13, 16, 61, 0.5),
+              2px 2px 5px rgba(13, 16, 61, .3);;
+  outline: none;
+}
+
+
+.keyboard {
+  width: 700px;
+  margin: 10px auto;
+  /* avoid user selection on keyboard*/
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.keyboard .row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.keyboard .key {
+  width: 40px;
+  height: 40px;
+  margin-right: 7px;
+
+  font-family: monospace;
+  font-size: 18px;
+  line-height: 40px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: center;
+  color: #fff;
+
+  background: #3a424e;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 2px 2px 10px rgba(13, 16, 61, 0.5);
+
+  cursor: pointer;
+}
+.keyboard .key:last-child {
+  margin-right: 0;
+}
+
+.keyboard .key:hover,
+.keyboard .key:focus {
+  background: #476a9e;
+}
+
+.keyboard .key:active {
+  box-shadow: inset 2px 2px 10px rgba(13, 16, 61, 0.5),
+    inset -2px 2px 10px rgba(13, 16, 61, 0.5);
+  outline: none;
+}
+
+.keyboard .backspace,
+.keyboard .capslock,
+.keyboard .shift-left,
+.keyboard .shift-right,
+.keyboard .enter {
+  width: 87px;
+}
+
+.keyboard .alt-left,
+.keyboard .alt-right,
+.keyboard .arrow,
+.keyboard .backspace,
+.keyboard .capslock,
+.keyboard .ctrl-left,
+.keyboard .ctrl-right,
+.keyboard .del,
+.keyboard .enter,
+.keyboard .shift-left,
+.keyboard .shift-right,
+.keyboard .tab,
+.keyboard .win {
+  font-size: 14px;
+  font-weight: 600;
+  color: #808080;
+
+  background-color: #1c232e;
+}
+
+.keyboard .arrow {
+  font-size: 20px;
+}
+
+.keyboard .space {
+  flex-grow: 1;
+}
+
+.keyboard sup {
+  position: absolute;
+
+  margin: -10px 0 0 -20px;
+
+  font-size: 12px;
+}
+
+.textarea {
+  display: block;
+  width: 700px;
+  height: 100px;
+  margin: 10px auto;
+  padding: 10px;
+
+  font-size: 18px;
+  color: #444;
+
+  resize: none;
+}
+
+.off, .case-hidden {
+  display: none;
+}
+
+
+.key.active {
+  background: #476a9e;
+  box-shadow: inset 2px 2px 10px rgba(13, 16, 61, 0.5),
+    inset -2px 2px 10px rgba(13, 16, 61, 0.5);
+}
